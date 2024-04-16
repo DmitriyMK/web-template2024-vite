@@ -7,9 +7,13 @@ import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 export default defineConfig({
+  server: {
+    port: 8100,
+    open: true
+  },
   css: {
     devSourcemap: true,
-  } ,
+  },
   plugins: [
     ViteImageOptimizer({
       png: {
