@@ -1,9 +1,13 @@
-@use "fonts";
-@use "reset";
-@use "vars";
-@use "global";
+@import "./reset";
+@import "./mixins";
+@import "./vars";
+@import "./fonts";
 
 
 body {
   background: yellow;
+}
+
+p {
+  font-size: rem(46);
 }
