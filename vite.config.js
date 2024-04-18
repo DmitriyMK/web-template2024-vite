@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 import glob from "fast-glob";
 import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import stylelint from 'vite-plugin-stylelint';
 
 export default defineConfig({
   server: {
@@ -28,6 +29,9 @@ export default defineConfig({
       avif: {
         quality: 86,
       }
+    }),
+    stylelint({
+      fix: true,
     }),
     {
       ...imagemin(["./src/img/**/*.{jpg,png,jpeg}"], {
