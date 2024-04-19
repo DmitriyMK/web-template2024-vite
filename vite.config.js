@@ -44,6 +44,7 @@ export default defineConfig({
     nunjucks(),
   ],
   build: {
+    minify: false,
     rollupOptions: {
       input: Object.fromEntries(
         glob

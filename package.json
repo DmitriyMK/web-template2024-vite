@@ -9,6 +9,12 @@
     "preview": "vite preview",
     "watch": "npx vite build --watch"
   },
+  "lint-staged": {
+    "*.scss": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
+  },
   "browserslist": [
     "last 3 versions",
     "> 5%",
@@ -46,5 +52,8 @@
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-nunjucks": "^0.2.0",
     "vite-plugin-stylelint": "^5.3.1"
+  },
+  "dependencies": {
+    "cssnano-preset-advanced": "^6.1.2"
   }
 }

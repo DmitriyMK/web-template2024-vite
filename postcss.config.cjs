@@ -4,7 +4,10 @@ module.exports = {
       sort: "mobile-first", // default value
     }),
     require('cssnano')({
-      preset: 'default',
+      "preset": [
+        "advanced",
+        {"discardComments": {"removeAll": true}}
+      ]
     }),
     require("autoprefixer"),
   ],
