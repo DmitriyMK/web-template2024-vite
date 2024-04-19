@@ -5,7 +5,6 @@ import { defineConfig } from "vite";
 import glob from "fast-glob";
 import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-import stylelint from 'vite-plugin-stylelint';
 import nunjucks from 'vite-plugin-nunjucks';
 
 export default defineConfig({
@@ -38,9 +37,6 @@ export default defineConfig({
       }),
       apply: "serve",
     },
-    stylelint({
-      fix: true,
-    }),
     nunjucks(),
   ],
   build: {

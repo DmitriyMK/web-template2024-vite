@@ -1,9 +1,13 @@
+import {
+  Curtains,
+  Plane,
+  RenderTarget,
+  Vec2,
+} from 'https://cdn.jsdelivr.net/npm/curtainsjs@7.3.2/src/index.mjs';
 
-import {Curtains, Plane, RenderTarget, Vec2} from 'https://cdn.jsdelivr.net/npm/curtainsjs@7.3.2/src/index.mjs';
-
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   const curtains = new Curtains({
-    container: "canvas",
+    container: 'canvas',
     pixelRatio: Math.min(1.5, window.devicePixelRatio),
     premultipliedAlpha: true, // better texture rendering
   });
@@ -53,31 +57,31 @@ window.addEventListener("load", () => {
     }
   `;
 
-  const planeEls = document.querySelectorAll(".plane");
+  const planeEls = document.querySelectorAll('.plane');
 
   const renderTarget = new RenderTarget(curtains);
 
   const writeTitle = (plane) => {
-    if(plane.textures.length > 1) {
-        const canvas = plane.textures[1].source;
-        const ctx = canvas.getContext("2d");
+    if (plane.textures.length > 1) {
+      const canvas = plane.textures[1].source;
+      const ctx = canvas.getContext('2d');
 
-        const planeBoundinRect = plane.getBoundingRect();
+      const planeBoundinRect = plane.getBoundingRect();
 
-        const htmlPlaneWidth = planeBoundinRect.width;
-        const htmlPlaneHeight = planeBoundinRect.height;
+      const htmlPlaneWidth = planeBoundinRect.width;
+      const htmlPlaneHeight = planeBoundinRect.height;
 
-        // set sizes
-        canvas.width = htmlPlaneWidth;
-        canvas.height = htmlPlaneHeight;
-        ctx.width = htmlPlaneWidth;
-        ctx.height = htmlPlaneHeight;
+      // set sizes
+      canvas.width = htmlPlaneWidth;
+      canvas.height = htmlPlaneHeight;
+      ctx.width = htmlPlaneWidth;
+      ctx.height = htmlPlaneHeight;
 
-        // const title = plane.htmlElement.querySelector("h2");
-        // const style = window.getComputedStyle(title);
+      // const title = plane.htmlElement.querySelector("h2");
+      // const style = window.getComputedStyle(title);
 
-        // font sizes
-        // const fontSize = parseFloat(style.fontSize) * curtains.pixelRatio;
+      // font sizes
+      // const fontSize = parseFloat(style.fontSize) * curtains.pixelRatio;
 
       // draw our title with the original style
       // ctx.fillStyle = style.color;
@@ -96,35 +100,36 @@ window.addEventListener("load", () => {
     }
   };
 
-  planeEls.forEach(planeEl => {
+  planeEls.forEach((planeEl) => {
     const plane = new Plane(curtains, planeEl, {
       vertexShader: vs,
       fragmentShader: fs,
     });
 
-    const canvas = document.createElement("canvas");
-    canvas.setAttribute("data-sampler", "titleTexture");
+    const canvas = document.createElement('canvas');
+    canvas.setAttribute('data-sampler', 'titleTexture');
     plane.loadCanvas(canvas);
 
-    plane.onLoading((texture) => {
-      if(texture.sourceType === "canvas") {
-        texture.shouldUpdate = false;
+    plane
+      .onLoading((texture) => {
+        if (texture.sourceType === 'canvas') {
+          texture.shouldUpdate = false;
+          writeTitle(plane);
+        }
+      })
+      .onAfterResize(function () {
         writeTitle(plane);
-      }
-    }).onAfterResize(function() {
-      writeTitle(plane);
-    });
+      });
 
     plane.setRenderTarget(renderTarget);
   });
-
 
   // perspective plane that will render our scene
 
   // nb of divisions
   let dividers = 4;
   const definition = 5;
-  const vertices = ((dividers * 2) - 1) * definition;
+  const vertices = (dividers * 2 - 1) * definition;
 
   // AVOID float numbers!
   dividers = parseInt(dividers);
@@ -224,31 +229,31 @@ window.addEventListener("load", () => {
     autoloadSources: false, // do not load curtains webgl canvas as a texture!
     uniforms: {
       depth: {
-        name: "uDepth",
-        type: "1f",
+        name: 'uDepth',
+        type: '1f',
         value: 0.1,
       },
       scrollPosition: {
-        name: "uScrollPosition",
-        type: "2f",
+        name: 'uScrollPosition',
+        type: '2f',
         value: new Vec2(),
       },
       nbDividers: {
-        name: "uNbDividers",
-        type: "1f",
+        name: 'uNbDividers',
+        type: '1f',
         value: dividers,
       },
       strength: {
-        name: "uStrength",
-        type: "1f",
+        name: 'uStrength',
+        type: '1f',
         value: 0,
-      }
+      },
     },
   });
 
   perspectivePlane.createTexture({
-    sampler: "sceneTexture",
-    fromTexture: renderTarget.getTexture()
+    sampler: 'sceneTexture',
+    fromTexture: renderTarget.getTexture(),
   });
 
   let scrollStrength = 0;
@@ -266,7 +271,7 @@ window.addEventListener("load", () => {
     scrollStrength = Math.max(-0.5, Math.min(deltas.y / 40, 0.5));
 
     // reset to 0 when scroll is finished
-    if(scrollEnded) {
+    if (scrollEnded) {
       clearTimeout(scrollEnded);
     }
 
