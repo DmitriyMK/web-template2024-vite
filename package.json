@@ -8,7 +8,7 @@
     "build": "vite build --base=./",
     "preview": "vite preview",
     "watch": "npx vite build --watch",
-    "html:lint": "markuplint \"./index.html\" \"./pages/**/*.html\"",
+    "html:lint": "markuplint \"src/index.html\" \"src/pages/**/*.html\" \"src/components/*.html\"",
     "style:lint": "stylelint \"src/**/{*.css,*.scss}\" --fix",
     "es:lint": "eslint \"src/**/*.js\" --fix",
     "lint": "npm run html:lint && npm run style:lint && npm run es:lint"
@@ -20,6 +20,7 @@
     "not dead"
   ],
   "devDependencies": {
+    "@markuplint/config-presets": "^4.4.0",
     "autoprefixer": "^10.4.4",
     "cssnano": "^6.1.2",
     "eslint": "^8.56.0",
@@ -29,7 +30,6 @@
     "imagemin": "^8.0.1",
     "imagemin-webp": "^8.0.0",
     "markuplint": "^3.15.0",
-    "@markuplint/config-presets": "^4.4.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-discard-comments": "^6.0.2",
@@ -51,5 +51,6 @@
     "vite-plugin-stylelint": "^5.3.1"
   },
   "dependencies": {
+    "vite-plugin-handlebars": "^2.0.0"
   }
 }

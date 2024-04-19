@@ -1,13 +1,21 @@
+import { resolve } from 'path';
 import imagemin from "imagemin";
 import imageminWebp from "imagemin-webp";
-import path from "path";
 import { defineConfig } from "vite";
-import glob from "fast-glob";
-import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-import nunjucks from 'vite-plugin-nunjucks';
+import handlebars from 'vite-plugin-handlebars';
+
+const pageData = {
+  '/index.html': {
+    title: 'lalaland',
+  },
+  '/pages/about/index.html': {
+    title: 'hellooooooo',
+  },
+};
 
 export default defineConfig({
+  root: './',
   server: {
     port: 8100,
     open: true
@@ -37,22 +45,22 @@ export default defineConfig({
       }),
       apply: "serve",
     },
-    nunjucks(),
+    handlebars({
+      partialDirectory: resolve(__dirname, './src/components'),
+      context(pagePath) {
+        return pageData[pagePath];
+      },
+    }),
   ],
   build: {
-    minify: false,
     rollupOptions: {
-      input: Object.fromEntries(
-        glob
-          .sync(["./*.html", "./pages/**/*.html"])
-          .map((file) => [
-            path.relative(__dirname, file.slice(0, file.length - path.extname(file).length)),
-            fileURLToPath(new URL(file, import.meta.url)),
-          ])
-      ),
+      input: {
+        index: resolve(__dirname, './src/index.html'),
+        about: resolve(__dirname, './src/pages/about/index.html'),
+      },
       output: {
-        chunkFileNames: 'assets/js/[name].[hash].js',
-        entryFileNames: 'assets/js/[name].[hash].js',
+        // chunkFileNames: 'assets/js/[name].[hash].js',
+        // entryFileNames: 'assets/js/[name].[hash].js',
         assetFileNames: ({ name }) => {
           if (/\.(jpe?g|png|webp|avif|gif|svg)$/.test(name ?? '')) {
             return 'assets/img/[name].[hash][extname]';
