@@ -6,6 +6,7 @@ import glob from "fast-glob";
 import { fileURLToPath } from "url";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import stylelint from 'vite-plugin-stylelint';
+import nunjucks from 'vite-plugin-nunjucks';
 
 export default defineConfig({
   server: {
@@ -30,9 +31,6 @@ export default defineConfig({
         quality: 86,
       }
     }),
-    stylelint({
-      fix: true,
-    }),
     {
       ...imagemin(["./src/img/**/*.{jpg,png,jpeg}"], {
         destination: "./src/img/minify/",
@@ -40,9 +38,12 @@ export default defineConfig({
       }),
       apply: "serve",
     },
+    stylelint({
+      fix: true,
+    }),
+    nunjucks(),
   ],
   build: {
-    minify: false,
     rollupOptions: {
       input: Object.fromEntries(
         glob

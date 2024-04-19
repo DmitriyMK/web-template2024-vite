@@ -45,8 +45,8 @@
 		background: $color;
 
 		@if $type == fade {
-			transition: .3s;
-			opacity: 0;
+            transition: .3s;
+            opacity: 0;
 			visibility: hidden;
 
 			@if $dir == bottom {
@@ -80,7 +80,7 @@
 	&:hover:after {
 		@if $type == fade {
 			bottom: $weight * -2;
-			opacity: 1;
+            opacity: 1;
 			visibility: visible;
 		}
 
