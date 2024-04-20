@@ -1,2 +1,2 @@
-import './about.scss'
-console.log('lllllaaaaaaaaaaa')
+import './about.scss';
+
