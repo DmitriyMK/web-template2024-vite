@@ -7,4 +7,3 @@ Clone this repo and then in command line type:
 - `npm run build` - build project from sources
 
 --
-npx stylelint "**/*.scss" --fix
