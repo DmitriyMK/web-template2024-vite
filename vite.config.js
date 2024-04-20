@@ -8,9 +8,11 @@ import handlebars from 'vite-plugin-handlebars';
 const pageData = {
   '/index.html': {
     title: 'lalaland',
+    path: resolve(__dirname),
   },
   '/pages/about/index.html': {
     title: 'hellooooooo',
+    path: resolve(__dirname, './src/pages/about/index.html'),
   },
 };
 
@@ -70,7 +72,7 @@ export default defineConfig({
             return 'assets/css/[name].[hash][extname]';
           }
           if (/\.woff2$/.test(name ?? '')) {
-            return 'assets/fonts/[name].[extname]';
+            return 'assets/fonts/[name][extname]';
           }
           return 'assets/[name].[extname]';
         },
