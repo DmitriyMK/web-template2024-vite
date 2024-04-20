@@ -15,10 +15,10 @@ const pageData = {
 };
 
 export default defineConfig({
-  root: './',
+  root: './src',
   server: {
     port: 8100,
-    open: true
+    open: false,
   },
   css: {
     devSourcemap: true,
@@ -53,6 +53,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    outDir: '../build',
     rollupOptions: {
       input: {
         index: resolve(__dirname, './src/index.html'),
