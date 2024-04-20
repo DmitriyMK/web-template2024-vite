@@ -27,31 +27,28 @@
 </head>
 <body>
 
-  {{>header}}
+  <div class="body">
+    {{>header}}
 
-  <h1>lalaland</h1>
+    <main class="main">
+      <section>
+        <div class="wrapper">
+          <p>
+            lalaland
+          </p>
 
-  <h3>
-    horay
-  </h3>
+          <a href="./pages/about/index.html">about page</a>
 
-  <main class="main">
-    <p>
-      lalaland
-    </p>
+          <picture>
+            <source type="image/webp" srcset="./img/minify/photo-001.webp">
+            <img src="./img/minify/photo-001.jpg" alt loading="lazy" />
+          </picture>
+        </div>
+      </section>
+    </main>
 
-    <a href="./pages/about/index.html">about page</a>
-
-    <picture>
-      <source type="image/webp" srcset="./img/minify/photo-001.webp">
-      <img src="./img/minify/photo-001.jpg" alt loading="lazy" />
-    </picture>
-
-
-
-  </main>
-
-  {{>footer}}
+    {{>footer}}
+  </div>
 
   <script type="module" src="./js/main.js"></script>
 </body>

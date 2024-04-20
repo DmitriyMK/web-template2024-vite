@@ -1,26 +1,19 @@
 @import "./reset";
 @import "./mixins";
 @import "./vars";
-// @import "./fonts";
+@import "./global";
+// @import "./fonts"; // font go to the head`s inline
 
 body {
   background: yellow;
 }
 
-body {
-  display: flex;
-  position: static;
-  left: 0;
-  background: yellow;
-  color: red;
-  font-family: Montserrat;
-  font-weight: 400;
-}
-
-p {
+p, h1 {
   font-size: rem(46);
   font-weight: 700;
   font-family: Montserrat;
+  color: #000;
+  text-align: center;
 }
 
 img {

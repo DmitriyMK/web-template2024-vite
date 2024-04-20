@@ -1,14 +1,67 @@
 @import './vars';
 @import './mixins';
 
-html {
-  font-size: 8px;
-}
 
 body {
-  background: var(--main-color);
-  color: var(--main-text-color);
-  font-family: Montserrat;
+	background: #000;
+	color: #fff;
+	font-family: Montserrat, Roboto, serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-size-adjust: none;
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	// Firefox Scroll
+	scrollbar-width: thin;          /* "auto" or "thin"  */
+	scrollbar-color: #f5f5f5 #666;
+
+	// webkit scroll
+	&::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #f5f5f5;
+	}
+
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #666;
+	}
+}
+
+.body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+*::selection {
+  background-color: #fafafa;
+  color: #000;
 }
 
 .wrapper {
