@@ -1,6 +1,7 @@
 import "../scss/style.scss";
 
 import sayHello from './lib/sayHello.js';
+import modal from './lib/modal.js';
 
 sayHello();
 
