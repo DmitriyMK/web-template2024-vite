@@ -21,11 +21,11 @@ const closeBurger = () => {
   nav.classList.remove('nav-open');
 };
 
-burger.addEventListener('click', function () {
+burger.addEventListener('click', () => {
   openBurger();
 });
 
-document.addEventListener('click', function (event) {
+document.addEventListener('click', (event) => {
   if (
     // event.target.matches('.header__menu-list a') ||
     event.target.closest('.header__menu-list a')
