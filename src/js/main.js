@@ -1,8 +1,35 @@
 import "../scss/style.scss";
-// import headerStyles from '../scss/header.module.scss';
 
 import sayHello from './lib/sayHello.js';
 
-// document.body.className = headerStyles.wrapper;
-
 sayHello();
+
+// navigation
+const burger = document.getElementById('burger');
+const nav = document.querySelector('.nav');
+const body = document.querySelector('body');
+
+const openBurger = () => {
+  body.classList.toggle('body-freeze');
+  burger.classList.toggle('burger-active');
+  nav.classList.toggle('nav-open');
+};
+
+const closeBurger = () => {
+  body.classList.remove('body-freeze');
+  burger.classList.remove('burger-active');
+  nav.classList.remove('nav-open');
+};
+
+burger.addEventListener('click', function () {
+  openBurger();
+});
+
+document.addEventListener('click', function (event) {
+  if (
+    // event.target.matches('.header__menu-list a') ||
+    event.target.closest('.header__menu-list a')
+  ) {
+    closeBurger();
+  }
+});

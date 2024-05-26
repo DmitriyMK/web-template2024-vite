@@ -1,7 +1,43 @@
 <header class="header">
-  <div class="wrapper">
-    <h1>
-      let`s go
-    </h1>
+  <div class="wrapper header__wrapper">
+
+    <a class="header__logo" href="./index.html">
+      <img src="../img/icons/github.svg" alt="" width="124" height="92">
+    </a>
+
+    <button
+      class="header__burger burger"
+      id="burger"
+      aria-label="close"
+      aria-controls="navigation"
+      aria-expanded="false"
+    >
+      BURGER
+    </button>
+
+    <nav class="header__nav nav" id="navigation">
+      <div class="nav__wrap">
+        <div class="nav__inner">
+
+          <!-- <button class="header__btn btn btn-small popup-trigger" data-popup-trigger="popup-order" data-theme="Зворотній дзвінок">
+            Зворотній дзвінок
+          </button> -->
+
+          <ul class="header__menu-list">
+            <li class="header__menu-item">
+              <a class="header__menu-link" href="../index.html">
+                Home
+              </a>
+            </li>
+
+            <li class="header__menu-item">
+              <a class="header__menu-link" href="">
+                Next pages
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </header>

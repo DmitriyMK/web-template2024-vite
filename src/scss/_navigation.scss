@@ -1,0 +1,55 @@
+.nav {
+  &__wrap {
+
+      @media (max-width: $tablet) {
+          position: fixed;
+          top: 50px;
+          right: 0;
+          transform: translateX(100vw);
+          height: calc(100% - 50px);
+          width: 100%;
+          min-height: calc(100vh - 50px);
+          background: #fafafa;
+          transition: transform $transition-fast;
+          z-index: 99999;
+          overflow-x: hidden;
+          overflow-y: auto;
+      }
+  }
+
+  &__inner {
+      display: grid;
+      gap: 20px 40px;
+      align-items: center;
+      grid-template-areas:
+          "mail location btn phone"
+          "menu menu menu menu";
+
+      @media (max-width: $laptop) {
+          gap: 10px 25px;
+      }
+
+      @media (max-width: $tablet) {
+          grid-template-areas:
+              "phone"
+              "menu"
+              "location"
+              "mail";
+      }
+  }
+
+  &__inner {
+      @media (max-width: $tablet) {
+          display: grid;
+          place-content: center;
+          padding-bottom: 40px;
+          height: 100%;
+      }
+  }
+
+  &.nav-open .nav__wrap {
+      @media (max-width: $tablet) {
+          transform: translateX(0);
+      }
+  }
+}
