@@ -32,4 +32,4 @@ modalTriggers.forEach((trigger) => {
   });
 });
 
-export default modal;
+export default 'modal';
