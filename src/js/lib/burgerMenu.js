@@ -1,30 +1,28 @@
 // navigation
 const burger = document.getElementById('burger');
-const nav = document.querySelector('.nav');
-const body = document.querySelector('body');
+const navigation = document.getElementById('navigation');
+const html = document.querySelector('html');
 
 const openBurger = () => {
-  body.classList.toggle('body-freeze');
+  html.classList.toggle('html-freeze');
   burger.classList.toggle('burger-active');
-  nav.classList.toggle('nav-open');
+  navigation.classList.toggle('nav-open');
 };
 
 const closeBurger = () => {
-  body.classList.remove('body-freeze');
+  html.classList.remove('html-freeze');
   burger.classList.remove('burger-active');
-  nav.classList.remove('nav-open');
+  navigation.classList.remove('nav-open');
 };
 
 if (burger) {
-  burger.addEventListener('click', () => {
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
     openBurger();
   });
 
-  document.addEventListener('click', (event) => {
-    if (
-      // event.target.matches('.header__menu-list a') ||
-      event.target.closest('.header__menu-list a')
-    ) {
+  window.addEventListener('click', (event) => {
+    if (!event.target.classList.contains('nav__inner')) {
       closeBurger();
     }
   });

@@ -1,5 +1,9 @@
 .nav {
   &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: tomato;
 
       @media (max-width: $tablet) {
           position: fixed;
@@ -48,6 +52,8 @@
   }
 
   &.nav-open .nav__wrap {
+    background: cyan;
+
       @media (max-width: $tablet) {
           transform: translateX(0);
       }
