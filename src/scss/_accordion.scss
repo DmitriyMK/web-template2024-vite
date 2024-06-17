@@ -1,0 +1,40 @@
+
+.accordion {
+  padding: 20px 0;
+
+  &__item {
+    list-style: none;
+  }
+
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $transition-fast;
+
+    & > div {
+      overflow: hidden;
+    }
+  }
+
+  &__btn {
+    outline: none;
+    background-color: DarkSeaGreen;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    border-radius: 0px;
+    cursor: pointer;
+
+    &:focus {
+      border-radius: 0px;
+      outline: none;
+    }
+
+    &._active + .accordion__panel {
+      grid-template-rows: 1fr;
+    }
+
+  }
+}
