@@ -1,0 +1,18 @@
+.backToTop {
+  position: fixed;
+  z-index: 100;
+  right: 64px;
+  bottom: 64px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  animation-name: bounce;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+
+  &._visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
