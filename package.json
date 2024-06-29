@@ -51,6 +51,10 @@
     "vite-plugin-stylelint": "^5.3.1"
   },
   "dependencies": {
-    "vite-plugin-handlebars": "^2.0.0"
+    "vite-plugin-handlebars": "^2.0.0",
+    "gsap": "^3.11.5",
+    "lil-gui": "^0.18.1",
+    "three": "^0.160.1",
+    "vite-plugin-glsl": "^1.1.2"
   }
 }

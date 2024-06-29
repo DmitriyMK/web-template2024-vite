@@ -4,6 +4,7 @@ import imageminWebp from "imagemin-webp";
 import { defineConfig } from "vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import handlebars from 'vite-plugin-handlebars';
+import glsl from 'vite-plugin-glsl';
 
 const pageData = {
   '/index.html': {
@@ -53,6 +54,7 @@ export default defineConfig({
         return pageData[pagePath];
       },
     }),
+    glsl(),
   ],
   build: {
     outDir: '../build',
